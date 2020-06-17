@@ -14,8 +14,8 @@
 <div style="height: 20%">
 
 
-    <div style="position: absolute; color: blue;">
-        <form action="/demo/api/Character/find" method="GET">
+    <div style="position: absolute; color: #0000ff;">
+        <form action="/api/Character/find" method="GET">
 
             <p>名字: <input type="text" id="name" name="name"/></p>
             <p>屬性:

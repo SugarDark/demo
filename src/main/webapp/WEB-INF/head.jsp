@@ -11,7 +11,7 @@
 
 <script>
     function newcharacter() {
-        var url = "/demo/api/Character/add";
+        var url = "/api/Character/add";
         var DataJSON = {};
 
         DataJSON["name"] = document.getElementById("fname").value;
@@ -45,7 +45,7 @@
     }
     function deletecharacter(id) {
         id = id.substring(1, id.length);
-        var url = "/demo/api/Character/delete/" + id;
+        var url = "/api/Character/delete/" + id;
         var DataJSON = {};
         $.ajax({url:url, data:JSON.stringify(DataJSON), type:"DELETE", dataType:"json",
             contentType:"application/json;charset=utf-8", success:function(){window.alert("delete success")},
