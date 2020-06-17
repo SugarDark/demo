@@ -20,6 +20,7 @@
             <p>名字: <input type="text" id="name" name="name"/></p>
             <p>屬性:
                 <select id = "Attri" name="attri">
+                    <option value = "" ></option>
                     <option value = "火" >火</option>
                     <option value = "水" >水</option>
                     <option value = "風" >風</option>
@@ -30,6 +31,7 @@
             </p>
             <p>種族:
                 <select id = "Race" name="race">
+                    <option value = "" ></option>
                     <option value = "人" >人</option>
                     <option value = "龍" >龍</option>
                     <option value = "精靈" >精靈</option>
@@ -39,6 +41,7 @@
             </p>
             <p>類型:
                 <select id = "Type" name="type">
+                    <option value = "" ></option>
                     <option value = "劍士" >劍士</option>
                     <option value = "射擊" >射擊</option>
                     <option value = "格鬥" >格鬥</option>

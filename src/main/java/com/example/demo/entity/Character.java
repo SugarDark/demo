@@ -37,12 +37,23 @@ public class Character {
     public String cv;
     @Field("intro")
     public String intro;
+    @Field("smallpic")
+    public String smallpic;
+    @Field("bigpic")
+    public String bigpic;
+    @Field("nickname")
+    public String nickname;
+    @Field("leadername")
+    public String leadername;
+    @Field("skillname")
+    public String skillname;
 
     public Character() {}
 
     public Character(String name, int atk, int hp, String attri, String gender, 
     		String race, String type, String leader, String skill, String abi1, 
-    		String abi2, String abi3, String cv, String intro) {
+    		String abi2, String abi3, String cv, String intro, String smallpic,
+                     String bigpic, String nickname, String leadername, String skillname) {
         this.name = name;
         this.atk = atk;
         this.attri = attri;
@@ -57,6 +68,11 @@ public class Character {
         this.abi3 = abi3;
         this.cv = cv;
         this.intro = intro;
+        this.smallpic = smallpic;
+        this.bigpic = bigpic;
+        this.nickname = nickname;
+        this.leadername = leadername;
+        this.skillname = skillname;
     }
 
     // getters and setters
@@ -150,6 +166,40 @@ public class Character {
     public void setintro(String intro) {
         this.intro = intro;
     }
+    public String getsmallpic() {
+        return smallpic;
+    }
+    public void setsmallpic(String smallpic) {
+        this.smallpic = smallpic;
+    }
+    public String getbigpic() {
+        return bigpic;
+    }
+    public void setbigpic(String bigpic) {
+        this.bigpic = bigpic;
+    }
+    public String getnickname() {
+        return nickname;
+    }
+    public void setnickname(String nickname) {
+        this.nickname = nickname;
+    }
+    public String getleadername() {
+        return leadername;
+    }
+    public void setleadername(String leadername) {
+        this.leadername = leadername;
+    }
+    public String getskillname() {
+        return skillname;
+    }
+    public void setskillname(String skillname) {
+        this.skillname = skillname;
+    }
+
+
+
+
 
 
 

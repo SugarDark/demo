@@ -8,6 +8,7 @@ import com.example.demo.repo.CharaHandler;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
@@ -70,15 +71,23 @@ public class CharacterController {
     /**
      * 新增一筆資料
      */
-    /*
-    @PostMapping(value="/add", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public Character createCustomer(@RequestBody Character character) {
-    	character.setId(ObjectId.get().toHexString());
-        characterRepo.save(character);
-        return character;
+
+    @PostMapping(value="/add")
+    public ResponseEntity<Character> createCharacter(@RequestBody Character character) {
+
+        characterrepo.insert(character);
+        return ResponseEntity.ok(character);
     }
 
 
+    @DeleteMapping(value="/delete/{id}")
+    public ResponseEntity<Character> deleteCustomer(@PathVariable("id") String id ) {
+
+        characterrepo.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+/*
     @GetMapping(value="/id/{id}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
     public Character getCustomerById(@PathVariable String id) {
         return characterrepo.findById(id).orElse(null);
