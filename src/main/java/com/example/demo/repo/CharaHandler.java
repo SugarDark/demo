@@ -126,4 +126,17 @@ public class CharaHandler {
 
         return matchingElements;
     }
+
+    public Character findbyidforupdate(List<Character> charalist, String id){
+        List<Character> matchele = charalist.stream().filter(
+                str -> str.getId().trim().equals(id))
+                .collect(Collectors.toList());
+        System.out.println("id");
+        System.out.println(id);
+        return matchele.get(0);
+
+    }
+
+
+
 }

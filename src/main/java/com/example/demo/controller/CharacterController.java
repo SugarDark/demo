@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Optional;
 
 import com.example.demo.repo.CharaHandler;
 import org.bson.types.ObjectId;
@@ -37,21 +38,21 @@ public class CharacterController {
     @GetMapping(value = "/find")
 
     public String findbyall(@RequestParam(required=false) String name, @RequestParam(required=false) String race, @RequestParam(required=false) String attri, @RequestParam(required=false) String type, ModelMap model) {
-        System.out.println("在find");
+            System.out.println("在find");
 
 
-        CharaHandler charaHandler = new CharaHandler();
+            CharaHandler charaHandler = new CharaHandler();
 
-        List<Character> alllist = characterrepo.findAll();
-
-
-        List<Character> filteredList = charaHandler.findbyall(alllist, name, attri, race, type);
-
-        System.out.println(filteredList.get(0).name);
+            List<Character> alllist = characterrepo.findAll();
 
 
-        //System.out.println(filteredClinicList);
-        model.addAttribute("filteredList", filteredList);
+            List<Character> filteredList = charaHandler.findbyall(alllist, name, attri, race, type);
+
+            System.out.println(filteredList.get(0).name);
+
+
+            //System.out.println(filteredClinicList);
+            model.addAttribute("filteredList", filteredList);
 
 
 
@@ -81,11 +82,35 @@ public class CharacterController {
 
 
     @DeleteMapping(value="/delete/{id}")
-    public ResponseEntity<Character> deleteCustomer(@PathVariable("id") String id ) {
+    public ResponseEntity<Character> deleteCharacter(@PathVariable("id") String id ) {
 
         characterrepo.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping(value="/update/{id}")
+    public String updateCharacter(@PathVariable("id") String id, ModelMap model) {
+
+        CharaHandler charaHandler = new CharaHandler();
+
+        System.out.println("in update");
+        List<Character> alllist = characterrepo.findAll();
+        Character target = charaHandler.findbyidforupdate(alllist, id);
+        System.out.println(target.toString());
+        model.addAttribute("target", target);
+        System.out.println("before out");
+        return "charaupdate";
+    }
+    @PutMapping(value="/updatecomplete")
+    public String updatecomplete(@RequestBody Character character) {
+
+        characterrepo.save(character);
+
+        return "index";
+    }
+
+
+
 
 /*
     @GetMapping(value="/id/{id}", produces=MediaType.APPLICATION_JSON_UTF8_VALUE)

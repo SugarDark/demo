@@ -13,6 +13,8 @@ public interface CharacterRepo extends MongoRepository<Character, String> {
     public List<Character> findByattri(String attri);
     public List<Character> findByrace(String race);
     public List<Character> findBytype(String type);
+    public Optional<Character> findById(String id);
+
 
 
 
