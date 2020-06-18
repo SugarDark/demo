@@ -97,16 +97,21 @@ public class CharacterController {
         List<Character> alllist = characterrepo.findAll();
         Character target = charaHandler.findbyidforupdate(alllist, id);
         System.out.println(target.toString());
-        model.addAttribute("target", target);
+        model.addAttribute("chara", target);
         System.out.println("before out");
         return "charaupdate";
     }
     @PutMapping(value="/updatecomplete")
-    public String updatecomplete(@RequestBody Character character) {
+    public ResponseEntity<Character> updatecomplete(@RequestBody Character character) {
+
+
+        System.out.println(character.getId());
+        System.out.println(character.getName());
+
 
         characterrepo.save(character);
 
-        return "index";
+        return ResponseEntity.noContent().build();
     }
 
 

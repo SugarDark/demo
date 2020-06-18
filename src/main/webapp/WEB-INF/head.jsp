@@ -47,18 +47,23 @@
         id = id.substring(1, id.length);
         var url = "/api/Character/delete/" + id;
         var DataJSON = {};
+        console.log("id");
+        console.log(id);
+
         $.ajax({url:url, data:JSON.stringify(DataJSON), type:"DELETE", dataType:"json",
-            contentType:"application/json;charset=utf-8", success:function(){window.alert("delete success")},
-            error:function(){window.alert("delete failed")}});
-        window.location.reload(true);
+            contentType:"application/json;charset=utf-8", success:function(){window.alert("delete success"),window.location.reload(true);},
+            error:function(){window.alert("delete failed");window.location.reload(true);}});
+
     }
     function updatecharacter(id) {
         id = id.substring(1, id.length);
         var url = "/api/Character/update/" + id;
 
-        $.ajax({url:url, type:"GET",
-            contentType:"application/json;charset=utf-8", success:function(){window.alert("update success")},
-            error:function(){window.alert("update failed")}});
+        // $.ajax({url:url, type:"GET",
+        //     contentType:"application/json;charset=utf-8", success:function(){},
+        //     error:function(){ }});
+
+        window.location.href = "http://localhost:5555/api/Character/update/" + id;
 
     }
 
@@ -194,7 +199,15 @@
             </tr>
             <tr align="right">
                 <td colspan="7">
-                    <button onclick = "updatecharacter('a'+'${item.id}')">修改</button>
+
+                    <form action="/api/Character/update/${item.id}" method="GET" id="${item.id}">
+
+<%--                        <input type="Submit" value="修改"  />--%>
+
+                    </form>
+
+
+                    <button onclick = "document.getElementById('${item.id}').submit()">修改</button>
                     <button onclick = "deletecharacter('a'+'${item.id}')">刪除</button>
                 </td>
             </tr>
